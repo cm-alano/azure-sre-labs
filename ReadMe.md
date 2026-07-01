@@ -65,3 +65,42 @@ The repository was built as part of my Azure SRE learning journey to improve my 
 ---
 
 ## Repository Structure
+azure-sre-terraform-labs/
+│
+├── modules/
+│   ├── resource-group/
+│   ├── networking/
+│   ├── storage/
+│   ├── monitoring/
+│   └── vm/
+│
+├── environments/
+│   ├── dev/
+│   │   ├── main.tf
+│   │   ├── providers.tf
+│   │   ├── versions.tf
+│   │   ├── variables.tf
+│   │   ├── terraform.tfvars
+│   │   └── outputs.tf
+│   │
+│   └── uat/
+│       ├── main.tf
+│       ├── providers.tf
+│       ├── versions.tf
+│       ├── variables.tf
+│       ├── terraform.tfvars
+│       └── outputs.tf
+│
+├── README.md
+└── .gitignore
+
+## Progress
+
+- [x] Day 1 - Resource Group
+- [ ] Day 2 - Networking
+- [ ] Day 3 - Storage
+- [ ] Day 4 - Remote State
+- [ ] Day 5 - Monitoring
+- [ ] Day 6 - VM
+- [ ] Day 7 - Modules
+- [ ] Day 8 - Final Project
