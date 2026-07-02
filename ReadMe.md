@@ -97,7 +97,7 @@ azure-sre-terraform-labs/
 ## Progress
 
 - [x] Day 1 - Resource Group
-- [ ] Day 2 - Networking
+- [x] Day 2 - Networking
 - [ ] Day 3 - Storage
 - [ ] Day 4 - Remote State
 - [ ] Day 5 - Monitoring

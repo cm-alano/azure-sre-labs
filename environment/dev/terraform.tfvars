@@ -6,5 +6,9 @@ location = "eastus"
 
 resource_group_tags = {
   "Environment" = "Dev"
-  "Owner" = "DevOps Team"
+  "Owner"       = "DevOps Team"
 }
+
+network_security_group_name = "nsg-dev-01"
+
+vnet_name = "vnet-dev-01"
