@@ -27,3 +27,14 @@ variable "vnet_name" {
   description = "Name of Vnet"
   type = string
 }
+
+variable "storage_account_name" {
+  description = "Name of Azure Storage Account"
+  type = string
+}
+
+variable "storage_allowed_ips" {
+  description = "Public IPs allowed to access the storage account"
+  type        = list(string)
+  default     = []
+}

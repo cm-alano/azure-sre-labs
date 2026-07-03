@@ -12,3 +12,7 @@ resource_group_tags = {
 network_security_group_name = "nsg-dev-01"
 
 vnet_name = "vnet-dev-01"
+
+storage_account_name = "sa0pdevenv"
+
+storage_allowed_ips = [ "180.190.209.143" ]
