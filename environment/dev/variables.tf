@@ -25,16 +25,21 @@ variable "network_security_group_name" {
 
 variable "vnet_name" {
   description = "Name of Vnet"
-  type = string
+  type        = string
 }
 
 variable "storage_account_name" {
   description = "Name of Azure Storage Account"
-  type = string
+  type        = string
 }
 
 variable "storage_allowed_ips" {
   description = "Public IPs allowed to access the storage account"
   type        = list(string)
   default     = []
+}
+
+variable "storage_account_container_name" {
+  description = "Name of the storage container that will store the tfstate"
+  type        = string
 }

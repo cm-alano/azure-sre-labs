@@ -15,4 +15,6 @@ vnet_name = "vnet-dev-01"
 
 storage_account_name = "sa0pdevenv"
 
-storage_allowed_ips = [ "180.190.209.143" ]
+storage_account_container_name = "dev-state-container"
+
+storage_allowed_ips = ["112.201.191.215"]

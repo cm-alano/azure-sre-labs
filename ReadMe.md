@@ -98,8 +98,8 @@ azure-sre-terraform-labs/
 
 - [x] Day 1 - Resource Group
 - [x] Day 2 - Networking
-- [ ] Day 3 - Storage
-- [ ] Day 4 - Remote State
+- [x] Day 3 - Storage
+- [x] Day 4 - Remote State
 - [ ] Day 5 - Monitoring
 - [ ] Day 6 - VM
 - [ ] Day 7 - Modules
