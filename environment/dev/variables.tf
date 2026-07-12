@@ -43,3 +43,23 @@ variable "storage_account_container_name" {
   description = "Name of the storage container that will store the tfstate"
   type        = string
 }
+
+variable "network_interface_name" {
+  description = "Name of the network interface for the virtual machine"
+  type        = string
+}
+
+variable "virtual_machine_name" {
+  description = "Name of the virtual machine name"
+  type        = string
+}
+
+variable "admin_username" {
+  description = "Username for logging in to the virtual machine"
+  type        = string
+}
+
+variable "admin_password" {
+  description = "Password for logging in to the virtual machine"
+  type        = string
+}
