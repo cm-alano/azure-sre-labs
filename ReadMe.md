@@ -65,34 +65,21 @@ graph TD
 ---
 
 ## Repository Structure
-azure-sre-terraform-labs/
-│
-├── modules/
-│   ├── resource-group/
-│   ├── networking/
-│   ├── storage/
-│   ├── monitoring/
-│   └── vm/
-│
-├── environments/
-│   ├── dev/
-│   │   ├── main.tf
-│   │   ├── providers.tf
-│   │   ├── versions.tf
-│   │   ├── variables.tf
-│   │   ├── terraform.tfvars
-│   │   └── outputs.tf
-│   │
-│   └── uat/
-│       ├── main.tf
-│       ├── providers.tf
-│       ├── versions.tf
-│       ├── variables.tf
-│       ├── terraform.tfvars
-│       └── outputs.tf
-│
-├── README.md
-└── .gitignore
+a## Repository Structure
+
+[#repository-structure](#repository-structure)
+
+```mermaid
+graph TD
+    Root[azure-sre-labs] --> Bootstrap[bootstrap/]
+    Root --> Docs[docs/]
+    Docs --> Img[img/]
+    Root --> Env[environment/]
+    Env --> Dev[dev/]
+    Root --> Modules[modules/]
+    Root --> Gitignore[.gitignore]
+    Root --> Readme[ReadMe.md]
+```
 
 ## Progress
 
