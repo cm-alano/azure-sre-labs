@@ -17,26 +17,26 @@ The repository was built as part of my Azure SRE learning journey to improve my 
 
 ## Architecture
 
-                    Azure Subscription
-                           │
-                    Resource Group
-                           │
-        ┌──────────────────┴──────────────────┐
-        │                                     │
- Storage Account                      Virtual Network
-        │                                     │
-   tfstate Container          ┌─────────┴─────────┐
-                              │                   │
-                         Web Subnet         App Subnet
-                              │                   │
-                             NSG                 NSG
+[#architecture](#architecture)
 
-                Log Analytics Workspace
-                          │
-                   Azure Monitor
-                          │
-                    Action Group
+​```mermaid
+graph TD
+    A[Azure Subscription] --> B[Resource Group]
+    B --> C[Storage Account]
+    B --> D[Virtual Network]
+    B --> G[Log Analytics Workspace]
 
+    C --> C1[tfstate Container]
+
+    D --> D1[Web Subnet]
+    D --> D2[App Subnet]
+    D1 --> N1[NSG]
+    D2 --> N2[NSG]
+    D2 --> VM[Linux Virtual Machine]
+
+    G --> H[Azure Monitor]
+    H --> I[Action Group]
+​```
 ---
 
 ## Technologies Used
