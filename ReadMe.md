@@ -19,7 +19,7 @@ The repository was built as part of my Azure SRE learning journey to improve my 
 
 [#architecture](#architecture)
 
-​```mermaid
+```mermaid
 graph TD
     A[Azure Subscription] --> B[Resource Group]
     B --> C[Storage Account]
@@ -36,7 +36,7 @@ graph TD
 
     G --> H[Azure Monitor]
     H --> I[Action Group]
-​```
+```
 ---
 
 ## Technologies Used
