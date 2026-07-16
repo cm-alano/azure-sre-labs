@@ -17,8 +17,6 @@ The repository was built as part of my Azure SRE learning journey to improve my 
 
 ## Architecture
 
-[#architecture](#architecture)
-
 ```mermaid
 graph TD
     A[Azure Subscription] --> B[Resource Group]
@@ -65,9 +63,6 @@ graph TD
 ---
 
 ## Repository Structure
-a## Repository Structure
-
-[#repository-structure](#repository-structure)
 
 ```mermaid
 graph TD
@@ -88,6 +83,6 @@ graph TD
 - [x] Day 3 - Storage
 - [x] Day 4 - Remote State
 - [x] Day 5 - VM
-- [ ] Day 6 - Monitoring
+- [x] Day 6 - Monitoring
 - [ ] Day 7 - Modules
 - [ ] Day 8 - Final Project

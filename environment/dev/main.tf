@@ -43,6 +43,11 @@ resource "azurerm_virtual_network" "vnetdev" {
   tags = var.resource_group_tags
 }
 
+resource "azurerm_subnet_network_security_group_association" "dev" {
+  subnet_id                 = azurerm_subnet.subnet1.id
+  network_security_group_id = azurerm_network_security_group.nsgdev.id
+}
+
 resource "azurerm_storage_account" "sadev" {
   name                = var.storage_account_name
   location            = azurerm_resource_group.rgdev.location
@@ -86,6 +91,7 @@ resource "azurerm_network_interface" "nicdev" {
     name                          = "testconfiguration1"
     subnet_id                     = azurerm_subnet.subnet1.id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id = azurerm_public_ip.devpip.id
   }
 }
 
@@ -96,11 +102,9 @@ resource "azurerm_virtual_machine" "vmdev" {
   network_interface_ids = [azurerm_network_interface.nicdev.id]
   vm_size               = "Standard_D2s_v3"
 
-  # Uncomment this line to delete the OS disk automatically when deleting the VM
-  # delete_os_disk_on_termination = true
+  delete_os_disk_on_termination = true
 
-  # Uncomment this line to delete the data disks automatically when deleting the VM
-  # delete_data_disks_on_termination = true
+  delete_data_disks_on_termination = true
 
   storage_image_reference {
     publisher = "Canonical"
@@ -123,4 +127,64 @@ resource "azurerm_virtual_machine" "vmdev" {
     disable_password_authentication = false
   }
   tags = var.resource_group_tags
+}
+
+resource "azurerm_log_analytics_workspace" "lawdev" {
+  name                = var.log_analytics_workspace_name
+  location            = azurerm_resource_group.rgdev.location
+  resource_group_name = azurerm_resource_group.rgdev.name
+  sku                 = "PerGB2018"
+  retention_in_days   = 30
+}
+
+resource "azurerm_virtual_machine_extension" "vmextensiondev" {
+  name                 = var.virtual_machine_name
+  virtual_machine_id   = azurerm_virtual_machine.vmdev.id
+  publisher            = "Microsoft.Azure.Extensions"
+  type                 = "CustomScript"
+  type_handler_version = "2.0"
+
+  settings = <<SETTINGS
+ {
+  "commandToExecute": "hostname && uptime"
+ }
+SETTINGS
+
+
+  tags = var.resource_group_tags
+}
+
+resource "azurerm_monitor_action_group" "actiongroupdev" {
+  name                = "CriticalAlertsAction"
+  resource_group_name = azurerm_resource_group.rgdev.name
+  short_name          = "p0action"
+
+  email_receiver {
+    name                    = "sendtodevops"
+    email_address           = "cristelalano@gmail.com"
+    use_common_alert_schema = true
+  }
+}
+
+resource "azurerm_monitor_activity_log_alert" "alertvmdev" {
+  name                = var.activity_log_alert_name
+  resource_group_name = azurerm_resource_group.rgdev.name
+  location            = "global"
+  scopes              = [azurerm_resource_group.rgdev.id]
+  description         = "This alert will monitor a specific virtual machine activity."
+
+  criteria {
+    resource_id    = azurerm_virtual_machine.vmdev.id
+    category       = "Administrative"
+    operation_name = "Microsoft.Compute/virtualMachines/deallocate/action"
+    status         = "Succeeded"
+  }
+
+  action {
+    action_group_id = azurerm_monitor_action_group.actiongroupdev.id
+
+    webhook_properties = {
+      from = "terraform"
+    }
+  }
 }

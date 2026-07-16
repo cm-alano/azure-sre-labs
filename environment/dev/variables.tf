@@ -63,3 +63,18 @@ variable "admin_password" {
   description = "Password for logging in to the virtual machine"
   type        = string
 }
+
+variable "log_analytics_workspace_name" {
+  description = "Name of the log analytics workspace"
+  type = string
+}
+
+variable "diagnostic_settings" {
+  description = "Diagnostic Settings for the VM to send logs to Log Analytics Workspace"
+  type = string
+}
+
+variable "activity_log_alert_name" {
+  description = "Name of alert rule for the dev virtual machine's activity logs"
+  type = string
+}
